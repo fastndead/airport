@@ -49,6 +49,26 @@ function view(){
 		}
 	}
 
+	this.popupRefreshPlaneSelect = function(){
+		var x = document.getElementById("popupPlaneSelect");
+		x.innerHTML = ""
+		for(var i = 0; i < planeList.length; i++){
+			var option = document.createElement("option");
+			option.text = planeList[i].name;
+			x.add(option);
+		}
+	}
+
+	this.popupRefreshPilotSelect = function(){
+		var x = document.getElementById("popupPilotSelect");
+		x.innerHTML = ""
+		for(var i = 0; i < pilotList.length; i++){
+			var option = document.createElement("option");
+			option.text = pilotList[i].firstName + " " + pilotList[i].lastName;
+			x.add(option);
+		}
+	}
+
 	this.refreshFlightTable = function(){
 		var table = document.getElementById("flightTable");
 		table.innerHTML = "<tr><th>№</th><th>Пилот</th><th>Самолёт</th><th>Рейс</th></tr>";
@@ -126,5 +146,19 @@ function view(){
 		}
 	}
 
+	this.popupBtnFlightsEdit = function(){
+		var popupItems = document.getElementsByClassName("popup flights edit");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
+
+	this.popupBtnFlightsEdit2 = function(){
+		this.stopPopup();
+		var popupItems = document.getElementsByClassName("popup flights edit2");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
 	
 }

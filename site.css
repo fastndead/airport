@@ -39,7 +39,7 @@
 		padding-top: 20px;
 	}
 	
-	#popupPlanes, #popupPilots{
+	#popupPlanes, #popupPilots, #popupFlights, #popupFlights2{
 		display: none;
 		position: fixed;
 		z-index: 1; 
@@ -63,7 +63,43 @@
     	background-color: white
 	}
 
-	#popupSpan {
+	#popupBackgroundFlight{
+		border-radius: 10px;
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		margin: 15% auto; 
+    	padding: 20px;
+    	border: 1px solid #888;
+    	width: 50%; 
+    	background-color: white;
+    	margin-top: 5%;
+	}
+
+	input.popup.edit2{
+		width: 50%;
+		display: inline;
+	}
+
+	.left.popup{
+		float: left;
+		margin-top: 20px;
+		margin-left: 20px;
+		width: 50%;
+	}
+	select.popup{
+		margin-bottom: 30px;
+		margin-top: 20px;
+		width: 50%;
+	}
+
+	.right.popup {
+	    padding-bottom: 0px;
+	    margin-bottom: 100px;
+	    width: 50%;
+	    margin-left: 50%;
+	    padding-top: 20px;
+	}
+
+	.popup.span {
 	    color: black;
 	    float: right;
 	    padding: 10px;
@@ -71,14 +107,14 @@
 	    font-weight: bold;
 	}
 
-	p.popup,#EditPlanesField, #EditPilotsField, #popupTextEdit,  #DeletePlaneField, #RemovePilotsField{
+	p.popup, .txt{
 	    margin-top: 20px;
 		margin-left: 20px;
 		width: 60%;
 	}
 
-	#popupSpan:hover,
-	#popupSpan:focus {
+	.popup.span:hover,
+	.popup.span:focus {
     cursor: pointer;
 	}
 
@@ -88,7 +124,7 @@
     	margin: 20px;
     }
 
-    .btn.popup.pilots, .btn.popup.planes{
+    .btn.popup{
     	margin: 20px;
     	height: 30px;
     }
@@ -109,7 +145,7 @@
 		margin-bottom: 10px;
 	}
 
-	.btn.pilots{
+	.btn:not(.popup){
 		margin: 10px;
 		margin-left: 0px;
 	}
