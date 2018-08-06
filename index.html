@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel="stylesheet" href="site.css">
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="Models/pilotModel.js"></script>
+  <script type="text/javascript" src="Models/planeModel.js"></script>
+  <script type="text/javascript" src="Models/flightModel.js"></script>
+  <script type="text/javascript" src="view.js"></script>
+  <script type="text/javascript" src="Models/dataModel.js"></script>
+  <meta charset="utf-8">
+  <title>Аэропорт</title>
+ </head>
+ 
+ 
+<body>
+<div  id = "pilots" class = "pilots">
+<p class = "pilots mainCaption">Пилоты:</p>
+	<div id = "popupPilots" class = "popup pilots add">
+		<div id = "popupBackground" class = "popup pilots add">
+			<span id = "popupSpan" class = "popup pilots add" onclick="Run.view.stopPopupPilots()">&times</span>
+			<p id = "popupText" class = "popup pilots add">Введите данные о пилоте</p>
+			<input id = "firstName" class = "popup pilots add" type = "text", size = "30">
+			<input id = "lastName" class = "popup pilots add" type = "text", size = "30">
+			<input class = "btn pilots popup add" onclick = "Run.addPilot()" type = "submit" value = "Добавить">
+		</div>	
+	</div>
+	<div id = "popupPilots" class = "popup pilots edit">
+		<div id = "popupBackgroundEdit" class = "popup pilots edit">
+			<span id = "popupSpan" class = "popup pilots edit" onclick="Run.view.stopPopupPilotsEdit()">&times</span>
+			<p id = "popupTextEdit" class = "popup pilots edit">Введите номер пилота:</p>
+			<input id = "EditPilotsField" class = "popup pilots edit" type = "text", size = "30">
+			<input id= "editBtn" class = "btn pilots popup edit" onclick = "Run.EditPilot()" type = "submit" value = "Изменить">
+		</div>	
+	</div>
+	<input id = "popupBtn" class = "btn pilots" onclick = "Run.view.popupBtnPilots()" type = "submit" value = "Добавить">
+	<input id = "popupBtn2" class = "btn pilots" onclick = "Run.view.popupBtnPilotsEdit()" type = "submit" value = "Редактировать">
+	<input class = "btn pilots" onclick = "Run.removePilot()" type = "submit" value = "Удалить">
+
+	<table id = "pilotTable" class = "pilots">
+	   <tr>
+		<th>№</th>
+		<th>Имя</th>
+		<th>Фамилия</th>
+	   </tr>
+	</table>	
+	
+</div>
+
+<div id = "planes">
+		<p class = "planes mainCaption">Самолёты:</p>
+	<div id = "popupPlanes" class = "popup">
+		<div id = "popupBackground">
+			<span id = "popupSpan" onclick="Run.view.stopPopupPlanes()">&times</span>
+			<p id = "popupText"class = "popupInside">Введите данные о самолёте</p>
+			<input id = "planeName" class = "planes" type = "text", size = "30">
+			<input class = "btn planes popupInside" onclick = "Run.addPlane()" type = "submit" value = "Добавить">
+		</div>	
+	</div>
+	<input id = "popupBtn" class = "btn pilots" onclick = "Run.view.popupBtnPlanes()" type = "submit" value = "Добавить">
+	<input class = "btn pilots" onclick = "Run.removePlane()" type = "submit" value = "Удалить">
+	<table id = "planeTable" class = "planes" >
+	   <tr>
+	    <th>№</th>
+		<th>Название</th>
+	   </tr>
+	</table>	
+</div>
+
+<div id = "flights">
+	<p id = "captionFlights" class = "flightsInternals mainCaption">Рейсы:</p>
+	<input class = "flightsInternals" id = "destination1" type = "text", size = 40> - <input class = "flightsInternals" id = "destination2" type = "text", size = 40>
+	<select class = "flightsInternals" id="planeSelect" width = 300px>
+	</select>
+	<select class = "flightsInternals" id="pilotSelect" width = 300px>
+	</select>
+	<input onclick = "Run.addFlight()" class = "btn flightsInternals" type = "submit" value = "Добавить">
+	<input class = "btn pilots" onclick = "Run.removeFlight()" type = "submit" value = "Удалить">
+
+	<table id = "flightTable"  width = "100%">
+	   <tr>
+		<th>№</th>
+	    <th>Пилот</th>
+		<th>Самолёт</th>
+	    <th>Рейс</th>
+		</tr>
+	</table>	
+</div>
+</body>
+
+</html>
