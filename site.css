@@ -53,7 +53,7 @@
 		background-color: rgba(0,0,0,0.2); 
 	}
 
-	#popupBackground, #popupBackgroundEdit{
+	#popupBackground, #popupBackgroundRemove, #popupBackgroundEdit{
 		border-radius: 10px;
 		box-shadow: 0 0 50px rgba(0,0,0,0.5);
 		margin: 15% auto; 
@@ -71,14 +71,12 @@
 	    font-weight: bold;
 	}
 
-	#popupText, #EditPilotsField, #popupTextEdit{
+	p.popup,#EditPlanesField, #EditPilotsField, #popupTextEdit,  #DeletePlaneField, #RemovePilotsField{
 	    margin-top: 20px;
 		margin-left: 20px;
-	}
-
-	#EditPilotsField{
 		width: 60%;
 	}
+
 	#popupSpan:hover,
 	#popupSpan:focus {
     cursor: pointer;
@@ -90,7 +88,7 @@
     	margin: 20px;
     }
 
-    .btn.popup.pilots{
+    .btn.popup.pilots, .btn.popup.planes{
     	margin: 20px;
     	height: 30px;
     }
@@ -101,7 +99,6 @@
 		margin: auto;
 		width: 100%;
 	}
-
 
 	.flightsInternals{
 		margin: 10px;
@@ -116,3 +113,5 @@
 		margin: 10px;
 		margin-left: 0px;
 	}
+
+

@@ -67,17 +67,6 @@ function view(){
 		}
 	}
 
-	this.stopPopupPilots = function(){
-		document.getElementById("firstName").value = ""
-		document.getElementById("lastName").value = ""
-		document.getElementById("popupPilots").style.display = "none";
-	}
-
-	this.stopPopupPlanes = function(){
-		document.getElementById("planeName").value = "";
-		document.getElementById("popupPlanes").style.display = "none";
-	}
-
 	this.clearFlightTxtFields = function(){
 		document.getElementById("destination1").value = "";
 		document.getElementById("destination2").value = "";
@@ -98,15 +87,44 @@ function view(){
 	}
 
 	this.popupBtnPlanes = function(){
-		document.getElementById("popupPlanes").style.display = "block";
+		var popupItems = document.getElementsByClassName("popup planes add");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
 	}
 
-	this.stopPopupPilotsEdit = function(){
-		document.getElementById("EditPilotsField").value = "";
-		document.getElementById("popupPlanes").style.display = "none";
-		var popupItems = document.getElementsByClassName("popup pilots edit");
+	this.stopPopup = function(){
+		var popupItems = document.getElementsByClassName("txt");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].value = "";
+		}
+
+		var popupItems = document.getElementsByClassName("popup");
 		for(var i = 0; i < popupItems.length; i++){
 			popupItems[i].style.display = "none";
 		}
 	}
+
+	this.popupBtnPlanesRemove = function(){
+		var popupItems = document.getElementsByClassName("popup planes remove");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
+
+	this.popupBtnPilotsRemove = function(){
+		var popupItems = document.getElementsByClassName("popup pilots remove");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
+
+	this.popupBtnPlanesEdit = function(){
+		var popupItems = document.getElementsByClassName("popup planes edit");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
+
+	
 }
