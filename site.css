@@ -196,7 +196,7 @@
 		margin-top: 100px;
     	padding: 20px;
     	border: 1px solid #888;
-    	width: 70%; 
+    	width: 40%; 
     	background-color: white;
     	text-align: center;
 	}
@@ -250,8 +250,8 @@
 	#pilotsInfoBackground{
 		border-radius: 10px;
 		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		margin: auto; 
 		margin-top: 100px;
-		margin: 15% auto; 
     	padding: 20px;
     	border: 1px solid #888;
     	width: 60%; 
