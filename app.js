@@ -21,10 +21,16 @@ function Run(){
 			a[i].addEventListener("click", Run.popup.popupStop);
 		})
 
+		document.onkeyup = function(e) {
+		   if (e.key=='Escape'||e.key=='Esc'||e.keyCode==27){
+		     Run.popup.popupStop();
+		   }
+		}
+
 		document.getElementById("addPilotBtn").addEventListener("click", Run.addPilot);
 		document.getElementById("editBtn").addEventListener("click", Run.EditPilot);
 		document.getElementById("removeBtn").addEventListener("click", Run.removePilot);
-		document.getElementById("popupBtnPilots").addEventListener("click", Run.popup.popupBtnPilots);
+		document.getElementById("popupBtnPilotsAdd").addEventListener("click", Run.popup.popupBtnPilotsAdd);
 		document.getElementById("popupBtnEditPilots").addEventListener("click", Run.popup.popupBtnPilotsEdit);	
 		document.getElementById("popupBtnDeletePilots").addEventListener("click", Run.popup.popupBtnPilotsRemove);
 		document.getElementById("addPlaneBtn").addEventListener("click", Run.addPlane);		
@@ -37,6 +43,11 @@ function Run(){
 		document.getElementById("addFlight").addEventListener("click", Run.addFlight);	
 		document.getElementById("popupBtnEditFlight").addEventListener("click", Run.popup.popupBtnFlightsEdit);	
 		document.getElementById("popupBtnFlightsRemove").addEventListener("click", Run.removeFlight);	
+		document.getElementById("addFlightBtn").addEventListener("click", Run.popup.popupBtnFlightsAdd);	
+		document.getElementById("PilotsBtn").addEventListener("click", Run.popup.popupBtnPilots);	
+		document.getElementById("PlanesBtn").addEventListener("click", Run.popup.popupBtnPilots);	
+		document.getElementById("popupSpanAdd").addEventListener("click", Run.popup.popupStopPilotsAdd);	
+	
 	}
 
 	this.addPilot = function(){
@@ -50,7 +61,7 @@ function Run(){
 		pilotList.push(inputPilot);
 		Run.view.refreshPilotTable();
 		Run.view.refreshPilotSelect();
-		Run.popup.popupStop();
+		Run.popup.popupStopPilotsAdd();
 	}
 
 	this.addPlane = function(){
@@ -83,6 +94,7 @@ function Run(){
 		flightList.push(newFlight);
 		Run.view.refreshFlightTable();
 		Run.view.clearFlightTxtFields();
+		Run.popup.popupStop();
 	}
 
 
@@ -238,6 +250,5 @@ function Run(){
 
 
 		editBtn.addEventListener("click", editFlight);	
-
 	}
 }
