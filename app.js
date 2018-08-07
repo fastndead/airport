@@ -224,7 +224,7 @@ function Run(){
 		var destination2Input = document.getElementById("editFlightDestination2");
 		
 		var indexToEdit = document.getElementById("EditFlightField").value - 1;
-		if(!isFinite(indexToEdit)){
+		if(!isFinite(indexToEdit) || indexToEdit === -1){
 			alert("Неправильно введены данные, попробуйте ещё." );
 			return;
 		}
