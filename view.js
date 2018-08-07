@@ -49,25 +49,7 @@ function view(){
 		}
 	}
 
-	this.popupRefreshPlaneSelect = function(){
-		var x = document.getElementById("popupPlaneSelect");
-		x.innerHTML = ""
-		for(var i = 0; i < planeList.length; i++){
-			var option = document.createElement("option");
-			option.text = planeList[i].name;
-			x.add(option);
-		}
-	}
 
-	this.popupRefreshPilotSelect = function(){
-		var x = document.getElementById("popupPilotSelect");
-		x.innerHTML = ""
-		for(var i = 0; i < pilotList.length; i++){
-			var option = document.createElement("option");
-			option.text = pilotList[i].firstName + " " + pilotList[i].lastName;
-			x.add(option);
-		}
-	}
 
 	this.refreshFlightTable = function(){
 		var table = document.getElementById("flightTable");
@@ -92,6 +74,32 @@ function view(){
 		document.getElementById("destination2").value = "";
 	}
 
+	
+	
+}
+
+function popup(){
+
+	this.popupRefreshPlaneSelect = function(){
+		var x = document.getElementById("popupPlaneSelect");
+		x.innerHTML = ""
+		for(var i = 0; i < planeList.length; i++){
+			var option = document.createElement("option");
+			option.text = planeList[i].name;
+			x.add(option);
+		}
+	}
+
+	this.popupRefreshPilotSelect = function(){
+		var x = document.getElementById("popupPilotSelect");
+		x.innerHTML = ""
+		for(var i = 0; i < pilotList.length; i++){
+			var option = document.createElement("option");
+			option.text = pilotList[i].firstName + " " + pilotList[i].lastName;
+			x.add(option);
+		}
+	}
+
 	this.popupBtnPilots = function(){
 		var popupItems = document.getElementsByClassName("popup pilots add");
 		for(var i = 0; i < popupItems.length; i++){
@@ -113,7 +121,7 @@ function view(){
 		}
 	}
 
-	this.stopPopup = function(){
+	this.popupStop = function(){
 		var popupItems = document.getElementsByClassName("txt");
 		for(var i = 0; i < popupItems.length; i++){
 			popupItems[i].value = "";
@@ -160,5 +168,4 @@ function view(){
 			popupItems[i].style.display = "block";
 		}
 	}
-	
 }

@@ -9,6 +9,7 @@ window.onload = function(){
 function Run(){
 
 	this.view = new view();
+	this.popup = new popup();
 	this.view.refreshPilotTable();
 	this.view.refreshPlaneTable();
 	this.view.refreshPlaneSelect();
@@ -17,24 +18,24 @@ function Run(){
 
 	this.initEventListeners = function(){
 		[].forEach.call(document.getElementsByClassName('popup span'), function(v,i,a) {
-			a[i].addEventListener("click", Run.view.stopPopup);
+			a[i].addEventListener("click", Run.popup.popupStop);
 		})
 
 		document.getElementById("addPilotBtn").addEventListener("click", Run.addPilot);
 		document.getElementById("editBtn").addEventListener("click", Run.EditPilot);
 		document.getElementById("removeBtn").addEventListener("click", Run.removePilot);
-		document.getElementById("popupBtnPilots").addEventListener("click", Run.view.popupBtnPilots);
-		document.getElementById("popupBtnEditPilots").addEventListener("click", Run.view.popupBtnPilotsEdit);	
-		document.getElementById("popupBtnDeletePilots").addEventListener("click", Run.view.popupBtnPilotsRemove);
+		document.getElementById("popupBtnPilots").addEventListener("click", Run.popup.popupBtnPilots);
+		document.getElementById("popupBtnEditPilots").addEventListener("click", Run.popup.popupBtnPilotsEdit);	
+		document.getElementById("popupBtnDeletePilots").addEventListener("click", Run.popup.popupBtnPilotsRemove);
 		document.getElementById("addPlaneBtn").addEventListener("click", Run.addPlane);		
 		document.getElementById("editBtnPlanes").addEventListener("click", Run.EditPlane);
 		document.getElementById("removePlaneBtn").addEventListener("click", Run.removePlane);
-		document.getElementById("popupBtnPlanes").addEventListener("click", Run.view.popupBtnPlanes);
-		document.getElementById("popupBtnPlanesEdit").addEventListener("click", Run.view.popupBtnPlanesEdit);
-		document.getElementById("popupBtnPlanesRemove").addEventListener("click", Run.view.popupBtnPlanesRemove);
+		document.getElementById("popupBtnPlanes").addEventListener("click", Run.popup.popupBtnPlanes);
+		document.getElementById("popupBtnPlanesEdit").addEventListener("click", Run.popup.popupBtnPlanesEdit);
+		document.getElementById("popupBtnPlanesRemove").addEventListener("click", Run.popup.popupBtnPlanesRemove);
 		document.getElementById("editBtnFlights").addEventListener("click", Run.editFlights);		
 		document.getElementById("addFlight").addEventListener("click", Run.addFlight);	
-		document.getElementById("popupBtnEditFlight").addEventListener("click", Run.view.popupBtnFlightsEdit);	
+		document.getElementById("popupBtnEditFlight").addEventListener("click", Run.popup.popupBtnFlightsEdit);	
 		document.getElementById("popupBtnFlightsRemove").addEventListener("click", Run.removeFlight);	
 	}
 
@@ -49,7 +50,7 @@ function Run(){
 		pilotList.push(inputPilot);
 		Run.view.refreshPilotTable();
 		Run.view.refreshPilotSelect();
-		Run.view.stopPopup();
+		Run.popup.popupStop();
 	}
 
 	this.addPlane = function(){
@@ -63,7 +64,7 @@ function Run(){
 		planeList.push(inputPlane);
 		Run.view.refreshPilotTable();
 		Run.view.refreshPilotSelect();
-		Run.view.stopPopup();
+		Run.popup.popupStop();
 	}
 
 	this.addFlight = function(){
@@ -130,7 +131,7 @@ function Run(){
 					return;
 				}
 				Run.view.refreshPilotTable();
-				Run.view.stopPopup();
+				Run.popup.popupStop();
 				document.getElementById("popupTextEdit").innerHTML = "Введите номер пилота:";
 				editBtn.removeEventListener("click", editLastName);
 				editBtn.addEventListener("click", Run.EditPilot);
@@ -152,7 +153,7 @@ function Run(){
 			alert("Неправильно введены данные, попробуйте ещё.\n" + e);
 		}
 		Run.view.refreshPlaneTable();
-		Run.view.stopPopup();
+		Run.popup.popupStop();
 	}
 
 	this.removePilot = function(){
@@ -164,7 +165,7 @@ function Run(){
 		}
 		pilotList.splice(indexToDelete - 1, 1);
 		Run.view.refreshPilotTable();
-		Run.view.stopPopup();
+		Run.popup.popupStop();
 	}
 
 	this.EditPlane = function(){
@@ -194,7 +195,7 @@ function Run(){
 					return;
 				}
 				Run.view.refreshPlaneTable();
-				Run.view.stopPopup();			
+				Run.popup.popupStop();			
 				document.getElementById("popupTextEdit").innerHTML = "Введите номер самолёта:";
 				document.getElementById("editBtnPlanes").removeEventListener("click", nameEdit);
 				document.getElementById("editBtnPlanes").addEventListener("click", Run.EditPlane);
@@ -210,7 +211,7 @@ function Run(){
 		function editFlight(){
 			flightList[indexToEdit] = new flightModel(destination1Input.value, destination2Input.value, pilotList[pilotSelect.selectedIndex],
 				planeList[planeSelect.selectedIndex]);
-			Run.view.stopPopup();
+			Run.popup.popupStop();
 			Run.view.refreshFlightTable();
 			editBtn.removeEventListener("click", editFlight);
 		}
@@ -228,9 +229,9 @@ function Run(){
 			return;
 		}
 
-		Run.view.popupBtnFlightsEdit2();
-		Run.view.popupRefreshPlaneSelect();
-		Run.view.popupRefreshPilotSelect();
+		Run.popup.popupBtnFlightsEdit2();
+		Run.popup.popupRefreshPlaneSelect();
+		Run.popup.popupRefreshPilotSelect();
 
 		destination1Input.value = flightList[indexToEdit].getDestination1();
 		destination2Input.value = flightList[indexToEdit].getDestination2();
