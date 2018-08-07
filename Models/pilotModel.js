@@ -14,6 +14,10 @@ function pilotModel(firstName, lastName){
 	this.getLastName = function(){
 		return lastName;
 	}
+
+	this.getFullName = function(){
+		return firstName + " " + lastName;
+	}
 };
 
 

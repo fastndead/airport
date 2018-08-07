@@ -69,9 +69,11 @@ function Run(){
 	this.addFlight = function(){
 		var planeSelect = document.getElementById("planeSelect");
 		var pilotSelect = document.getElementById("pilotSelect");
+		var pilot = pilotList[pilotSelect.selectedIndex];
+		var plane = planeList[planeSelect.selectedIndex];
 		try{
 			var newFlight = new flightModel(document.getElementById("destination1").value, document.getElementById("destination2").value, 
-				pilotSelect.options[pilotSelect.selectedIndex].value, planeSelect.options[planeSelect.selectedIndex].value);
+				pilotList[pilotSelect.selectedIndex], planeList[planeSelect.selectedIndex]);
 		}
 		catch(e){
 			alert(e);
@@ -205,14 +207,36 @@ function Run(){
 	}
 	
 	this.editFlights = function(){
+		function editFlight(){
+			flightList[indexToEdit] = new flightModel(destination1Input.value, destination2Input.value, pilotList[pilotSelect.selectedIndex],
+				planeList[planeSelect.selectedIndex]);
+			Run.view.stopPopup();
+			Run.view.refreshFlightTable();
+			editBtn.removeEventListener("click", editFlight);
+		}
+
+
+		var editBtn = document.getElementById("editBtnFlights2");
+		var planeSelect = document.getElementById("popupPlaneSelect");
+		var pilotSelect = document.getElementById("popupPilotSelect");
+		var destination1Input = document.getElementById("editFlightDestination1");
+		var destination2Input = document.getElementById("editFlightDestination2");
+		
 		var indexToEdit = document.getElementById("EditFlightField").value - 1;
 		if(!isFinite(indexToEdit)){
 			alert("Неправильно введены данные, попробуйте ещё." );
 			return;
 		}
+
 		Run.view.popupBtnFlightsEdit2();
 		Run.view.popupRefreshPlaneSelect();
-		Run.view.popupRefreshPilotSelect();	
-		
+		Run.view.popupRefreshPilotSelect();
+
+		destination1Input.value = flightList[indexToEdit].getDestination1();
+		destination2Input.value = flightList[indexToEdit].getDestination2();
+
+
+		editBtn.addEventListener("click", editFlight);	
+
 	}
 }

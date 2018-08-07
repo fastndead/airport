@@ -81,8 +81,8 @@ function view(){
 			var cell4 = row.insertCell(3);
 			console.log(flightList[i].indexPilot);
 			cell1.innerHTML = i + 1;
-			cell2.innerHTML = flightList[i].pilot.toString();
-			cell3.innerHTML = flightList[i].plane.toString();
+			cell2.innerHTML = flightList[i].pilot.getFullName();
+			cell3.innerHTML = flightList[i].plane.getName();
 			cell4.innerHTML = flightList[i].destination1 + " - " + flightList[i].destination2;
 		}
 	}
