@@ -1,23 +1,27 @@
+"use strict";
+
 function popup(){
 
-	this.popupRefreshPlaneSelect = function(){
+	this.popupRefreshPlaneSelect = function(params){
 		var x = document.getElementById("popupPlaneSelect");
 		x.innerHTML = ""
-		for(var i = 0; i < planeList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var option = document.createElement("option");
-			option.text = planeList[i].name;
+			option.text = currentValue.getName();
 			x.add(option);
-		}
+		})
 	}
 
-	this.popupRefreshPilotSelect = function(){
+	this.popupRefreshPilotSelect = function(params){
 		var x = document.getElementById("popupPilotSelect");
 		x.innerHTML = ""
-		for(var i = 0; i < pilotList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var option = document.createElement("option");
-			option.text = pilotList[i].firstName + " " + pilotList[i].lastName;
+			option.text = currentValue.getFullName();
 			x.add(option);
-		}
+		})
 	}
 
 	this.popupBtnPilotsAdd = function(){

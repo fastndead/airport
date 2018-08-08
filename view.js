@@ -2,71 +2,77 @@
 
 function view(){
 
-	this.refreshPilotTable = function(){
+	this.refreshPilotTable = function(params){
 		var table = document.getElementById("pilotTable");
 		table.innerHTML = "<tr><th>№</th><th>Имя</th><th>Фамилия</th></tr>";
-		for(var i = 0; i < pilotList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var row = table.insertRow(table.lastIndex);
-			var cell1 = row.insertCell(0)
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			cell1.innerHTML = i + 1
-			cell2.innerHTML = pilotList[i].getFirstName();
-			cell3.innerHTML = pilotList[i].getLastName();
-		}
+			var indexCell 		= row.insertCell(0)
+			var firstNameCell 	= row.insertCell(1);
+			var lastNameCell 	= row.insertCell(2);
+
+			indexCell.innerHTML 	= index + 1;
+			firstNameCell.innerHTML = currentValue.getFirstName();
+			lastNameCell.innerHTML 	= currentValue.getLastName();
+		});
 	}
 
 
-	this.refreshPlaneTable = function(){
+	this.refreshPlaneTable = function(params){
 		var table = document.getElementById("planeTable");
 		table.innerHTML = "<tr><th>№</th><th>Название</th></tr>";
-		for(var i = 0; i < planeList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var row = table.insertRow(table.lastIndex);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			cell2.innerHTML = planeList[i].name;
-			cell1.innerHTML = i + 1;
-		}
+			var indexCell = row.insertCell(0);
+			var nameCell = row.insertCell(1);
+			indexCell.innerHTML = index + 1;
+			nameCell.innerHTML 	= currentValue.getName();
+		});
 	}
 
-	this.refreshPlaneSelect = function(){
+	this.refreshPlaneSelect = function(params){
 		var x = document.getElementById("planeSelect");
 		x.innerHTML = ""
-		for(var i = 0; i < planeList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var option = document.createElement("option");
-			option.text = planeList[i].name;
+			option.text = currentValue.getName();
 			x.add(option);
-		}
+		})
 	}
 
-	this.refreshPilotSelect = function(){
+	this.refreshPilotSelect = function(params){
 		var x = document.getElementById("pilotSelect");
 		x.innerHTML = ""
-		for(var i = 0; i < pilotList.length; i++){
+
+		params.forEach(function callback(currentValue, index, array){
 			var option = document.createElement("option");
-			option.text = pilotList[i].firstName + " " + pilotList[i].lastName;
+			option.text = currentValue.getFullName();
 			x.add(option);
-		}
+		})
 	}
 
 
 
-	this.refreshFlightTable = function(){
+	this.refreshFlightTable = function(params){
 		var table = document.getElementById("flightTable");
 		table.innerHTML = "<tr><th>№</th><th>Пилот</th><th>Самолёт</th><th>Рейс</th></tr>";
-		for(var i = 0; i < flightList.length; i++)
+
+		params.forEach(function callback(currentValue, index, array)
 		{
 			var row = table.insertRow(table.lastIndex);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			var cell4 = row.insertCell(3);
-			console.log(flightList[i].indexPilot);
-			cell1.innerHTML = i + 1;
-			cell2.innerHTML = flightList[i].pilot.getFullName();
-			cell3.innerHTML = flightList[i].plane.getName();
-			cell4.innerHTML = flightList[i].destination1 + " - " + flightList[i].destination2;
-		}
+			var indexCell = row.insertCell(0);
+			var pilotCell = row.insertCell(1);
+			var planeCell = row.insertCell(2);
+			var destinationsCell = row.insertCell(3);
+
+			indexCell.innerHTML = index + 1;
+			pilotCell.innerHTML = currentValue.pilot.getFullName();
+			planeCell.innerHTML = currentValue.plane.getName();
+			destinationsCell.innerHTML = currentValue.destination1 + " - " + currentValue.destination2;
+		});
 	}
 
 	this.clearFlightTxtFields = function(){
