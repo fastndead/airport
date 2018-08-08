@@ -34,7 +34,7 @@ function popup(){
 		}
 	}
 
-	this.popupBtnPlanes = function(){
+	this.popupBtnPlanesAdd = function(){
 		var popupItems = document.getElementsByClassName("popup planes add");
 		for(var i = 0; i < popupItems.length; i++){
 			popupItems[i].style.display = "block";
@@ -89,6 +89,12 @@ function popup(){
 		}
 	}
 
+	this.popupBtnFlightsRemove = function(){
+		var popupItems = document.getElementsByClassName("popup flights remove");
+		for(var i = 0; i < popupItems.length; i++){
+			popupItems[i].style.display = "block";
+		}
+	}
 	this.popupBtnFlightsAdd = function(){
 		var popupItems = document.getElementsByClassName("popup flight add");
 		for(var i = 0; i < popupItems.length; i++){
@@ -110,10 +116,13 @@ function popup(){
 		}
 	}
 
-	this.popupStopPilotsAdd = function(){
-		var popupItems = document.getElementsByClassName("popup pilots add");
-		for(var i = 0; i < popupItems.length; i++){
-			popupItems[i].style.display = "none";
-		}
+	this.popupStopAllExceptPlaneInfo = function(){
+		Run.popup.popupStop();
+		Run.popup.popupBtnPlanes();
+	}
+
+	this.popupStopAllExceptPilotInfo = function(){
+		Run.popup.popupStop();
+		Run.popup.popupBtnPilots();
 	}
 }

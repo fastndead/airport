@@ -28,9 +28,10 @@
 <div id = "popupAddFlight" class = "popup flight add">
 	<div id = "popupAddFlightBackground" class = "popupBackground popup flight add">
 		<span class = "popup span flight add"> &times; </span>
+
 		<p class="mainCaption">Введите данные о рейсе:</p>
-		<input class = "popupAddFlightsInternals popup flight add" id = "destination1" type = "text" size = 40 placeholder="Город отправления"> 
-		<input class = "popupAddFlightsInternals popup flight add" id = "destination2" type = "text" size = 40 placeholder="Город прибытия">
+		<input id = "destination1" class = "popupAddFlightsInternals popup flight add" type = "text"  placeholder="Город отправления">
+		<input id = "destination2" class = "popupAddFlightsInternals popup flight add" type = "text"  placeholder="Город прибытия">
 		<div class="popupAddFlightsInternals popup flight add" ><p class="popupAddFlightsInternals">Самолёт:</p>
 			<select class = "popupAddFlightsInternals popup flight add" id="planeSelect" width = 300px>
 			</select>
@@ -63,7 +64,7 @@
 	</div>
 	<div id = "popupPilots" class = "popup pilots add">
 		<div id = "popupBackground" class = "popup pilots add">
-			<span id = "popupSpanAdd" class = "popup pilots add"> &times; </span>
+			<span class = "popup  notInfo pilots add"> &times; </span>
 			<p id = "popupText" class = "popup pilots add">Введите данные о пилоте:</p>
 			<input id = "firstName" class = "popup pilots add txt" type = "text" size = "30">
 			<input id = "lastName" class = "popup pilots add txt" type = "text" size = "30">
@@ -72,7 +73,7 @@
 	</div>
 	<div id = "popupPilots" class = "popup pilots edit">
 		<div id = "popupBackgroundEdit" class = "popup pilots edit">
-			<span  class = "popup span pilots edit" >&times; </span>
+			<span  class = "popup notInfo pilots edit" >&times; </span>
 			<p id = "popupTextEdit" class = "popup pilots edit">Введите номер пилота:</p>
 			<input id = "EditPilotsField" class = "popup pilots edit txt" type = "text" size = "30">
 			<input id= "editBtn" class = "btn pilots popup edit" type = "submit" value = "Изменить">
@@ -81,7 +82,7 @@
 
 	<div id = "popupPilots" class = "popup pilots remove">
 		<div id = "popupBackgroundRemove" class = "popup pilots remove">
-			<span class = "popup span pilots remove" >&times; </span>
+			<span class = "popup notInfo pilots remove" >&times; </span>
 			<p id = "popupTextRemove" class = "popup pilots remove">Введите номер пилота:</p>
 			<input id = "RemovePilotsField" class = "popup pilots remove txt" type = "text" size = "30">
 			<input id= "removeBtn" class = "btn pilots popup remove"  type = "submit" value = "Удалить">
@@ -92,23 +93,26 @@
 <div id = "planes">
 	<div id = "popupPlanesInfo" class = "popup planes info">
 		<div id = popupPlanesInfoBackground>
+			<span class = "popup span planes info" >&times; </span>
 			<p class = "planes popup info mainCaption">Самолёты:</p>
-			<input id = "popupBtnPlanes" class = "btn planes popup info" type = "submit" value = "Добавить">
-			<input id = "popupBtnPlanesEdit" class = "btn planes popup info" type = "submit" value = "Редактировать">
-			<input id = "popupBtnPlanesRemove"class = "btn planes popup info"  type = "submit" value = "Удалить">
-			<table id = "planeTable" class = "planes popup info" >
-			   <tr>
-			    <th>№</th>
-				<th>Название</th>
-			   </tr>
-			</table>
+			<div class = "planes popup info">
+				<input id = "popupBtnPlanes" class = "btn planes info" type = "submit" value = "Добавить">
+				<input id = "popupBtnPlanesEdit" class = "btn planes info" type = "submit" value = "Редактировать">
+				<input id = "popupBtnPlanesRemove"class = "btn planes info"  type = "submit" value = "Удалить">
+				<table id = "planeTable" class = "planes  info" >
+				   <tr>
+				    <th>№</th>
+					<th>Название</th>
+				   </tr>
+				</table>
+			</div>
 		</div>
 	</div>
 
 
 	<div id = "popupPlanesAdd" class = "popup planes add">
 		<div id = "popupBackground" class = "popup planes add">
-			<span class = "popup span planes add" >&times; </span>
+			<span class = "popup  planes add notInfo" >&times; </span>
 			<p id = "popupText" class = "popup planes add">Введите данные о самолёте:</p>
 			<input id = "planeName"  class = "popup planes add txt" type = "text" size = "30">
 			<input id = "addPlaneBtn" class = "btn planes popup add" type = "submit" value = "Добавить">
@@ -117,7 +121,7 @@
 
 	<div id = "popupPlanesEdit" class = "popup planes edit">
 		<div id = "popupBackgroundEdit" class = "popup planes edit">
-			<span class = "popup span planes edit" >&times; </span>
+			<span class = "popup  planes edit notInfo" >&times; </span>
 			<p id = "popupTextEditPlanes" class = "popup planes edit">Введите номер самолёта:</p>
 			<input id = "EditPlanesField" class = "popup planes edit txt" type = "text" size = "30">
 			<input id= "editBtnPlanes" class = "btn planes popup edit" type = "submit" value = "Изменить">
@@ -126,7 +130,7 @@
 
 	<div id = "popupPlanesRemove" class = "popup planes remove">
 		<div id = "popupBackground">
-			<span class = "popup span planes remove" >&times; </span>
+			<span class = "popup planes remove notInfo" >&times; </span>
 			<p id = "popupText" class = "popup planes remove">Введите номер самолёта:</p>
 			<input id = "DeletePlaneField" class = "popup planes remove txt" type = "text" size = "30">
 			<input id = "removePlaneBtn" class = "btn planes popup remove" type = "submit" value = "Удалить">
@@ -140,33 +144,40 @@
 		<div id = "popupBackground">
 			<span class = "popup span flights edit" >&times; </span>
 			<p id = "popupText" class = "popup flights edit">Введите номер рейса:</p>
-			<input id = "EditFlightField" class = "popup flights edit txt" type = "text" size = "30">
+			<input id = "EditFlightField" class = "popup flights edit txt" type = "text">
 			<input id = "editBtnFlights" class = "btn flights popup edit" type = "submit" value = "Изменить">
 		</div>
 	</div>
 	<div id = "popupFlights2" class = "popup flights edit2">
-		<span class = "popup span planes remove" >&times; </span>
 		<div id = "popupBackgroundFlight">
-			<span class = "popup span flights edit2" >&times; </span>
-			<div class = "popup flights edit2 left">
-				<p class = "popup flights edit2">From:</p>
-				<input id = "editFlightDestination1" class = "popup flights edit2" id = "destination1" type = "text" size = 40> 
-				<p class = "popup flights edit2">To:</p>
-				<input id = "editFlightDestination2" class = "popup flights edit2" id = "destination2" type = "text" size = 40>
-			</div>
-
-			<div class = "popup flights edit2 right">
-				<p class = "popup flights edit2">Plane:</p>
-				<select class = "popup flights edit2" id="popupPlaneSelect" width = 300px>
-				</select>
-				<p class = "popup flights edit2">Pilot:</p>
-				<select class = "popup flights edit2" id="popupPilotSelect" width = 300px>
-				</select>
-				<input id = "editBtnFlights2" class = "btn flights popup edit2" type = "submit" value = "Изменить">
-			</div>
+			<span class = "popup span flights edit2" > &times; </span>
 			
+			<div class = "popup flights edit2">
+				
+				<p class = "popup flights edit2">Введите данные о рейсе:</p>
+
+				<input id = "editFlightDestination1" placeholder = "Город отправления"   id = "destination1" type = "text"> 
+				<input id = "editFlightDestination2" placeholder = "Город прибытия"   id = "destination2" type = "text">
+				<p>Самолёт:</p>
+				<select  id="popupPlaneSelect" width = 300px>
+				</select>
+				<p >Пилот:</p>
+				<select id="popupPilotSelect" width = 300px>
+				</select>
+				<input id = "editBtnFlights2" type = "submit" value = "Изменить">
+			</div>
 		</div>
 	</div>
+
+	<div id = "popupFlightRemove" class = "popup flights remove">
+		<div id = "popupBackground">
+			<span class = "popup span flights remove notInfo" >&times; </span>
+			<p id = "popupText" class = "popup flights remove">Введите номер рейса:</p>
+			<input id = "DeleteFlightField" class = "popup flights remove txt" type = "text" size = "30">
+			<input id = "removeFlightBtn" class = "btn flights popup remove" type = "submit" value = "Удалить">
+		</div>	
+	</div>
+
 	<input id = "popupBtnEditFlight" class = "btn flights" type = "submit" value = "Редактировать">
 		<input id = "popupBtnFlightsRemove" class = "btn flights" type = "submit" value = "Удалить">	
 

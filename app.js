@@ -19,7 +19,15 @@ function Run(){
 	this.initEventListeners = function(){
 		[].forEach.call(document.getElementsByClassName('popup span'), function(v,i,a) {
 			a[i].addEventListener("click", Run.popup.popupStop);
-		})
+		});
+
+		[].forEach.call(document.getElementsByClassName('popup planes notInfo'), function(v,i,a) {
+			a[i].addEventListener("click", Run.popup.popupStopAllExceptPlaneInfo);
+		});
+
+		[].forEach.call(document.getElementsByClassName('popup pilots notInfo'), function(v,i,a) {
+			a[i].addEventListener("click", Run.popup.popupStopAllExceptPilotInfo);
+		});
 
 		document.onkeyup = function(e) {
 		   if (e.key=='Escape'||e.key=='Esc'||e.keyCode==27){
@@ -36,18 +44,18 @@ function Run(){
 		document.getElementById("addPlaneBtn").addEventListener("click", Run.addPlane);		
 		document.getElementById("editBtnPlanes").addEventListener("click", Run.EditPlane);
 		document.getElementById("removePlaneBtn").addEventListener("click", Run.removePlane);
-		document.getElementById("popupBtnPlanes").addEventListener("click", Run.popup.popupBtnPlanes);
+		document.getElementById("popupBtnPlanes").addEventListener("click", Run.popup.popupBtnPlanesAdd);
 		document.getElementById("popupBtnPlanesEdit").addEventListener("click", Run.popup.popupBtnPlanesEdit);
 		document.getElementById("popupBtnPlanesRemove").addEventListener("click", Run.popup.popupBtnPlanesRemove);
 		document.getElementById("editBtnFlights").addEventListener("click", Run.editFlights);		
 		document.getElementById("addFlight").addEventListener("click", Run.addFlight);	
 		document.getElementById("popupBtnEditFlight").addEventListener("click", Run.popup.popupBtnFlightsEdit);	
-		document.getElementById("popupBtnFlightsRemove").addEventListener("click", Run.removeFlight);	
 		document.getElementById("addFlightBtn").addEventListener("click", Run.popup.popupBtnFlightsAdd);	
 		document.getElementById("PilotsBtn").addEventListener("click", Run.popup.popupBtnPilots);	
-		document.getElementById("PlanesBtn").addEventListener("click", Run.popup.popupBtnPilots);	
-		document.getElementById("popupSpanAdd").addEventListener("click", Run.popup.popupStopPilotsAdd);	
-	
+		document.getElementById("PlanesBtn").addEventListener("click", Run.popup.popupBtnPlanes);	
+		document.getElementById("popupBtnFlightsRemove").addEventListener("click", Run.popup.popupBtnFlightsRemove);	
+		document.getElementById("removeFlightBtn").addEventListener("click", Run.removeFlight);	
+		
 	}
 
 	this.addPilot = function(){
@@ -61,7 +69,7 @@ function Run(){
 		pilotList.push(inputPilot);
 		Run.view.refreshPilotTable();
 		Run.view.refreshPilotSelect();
-		Run.popup.popupStopPilotsAdd();
+		Run.popup.popupStopAllExceptPilotInfo();
 	}
 
 	this.addPlane = function(){
@@ -73,9 +81,9 @@ function Run(){
 			return;
 		}
 		planeList.push(inputPlane);
-		Run.view.refreshPilotTable();
-		Run.view.refreshPilotSelect();
-		Run.popup.popupStop();
+		Run.view.refreshPlaneTable();
+		Run.view.refreshPlaneSelect();
+		Run.popup.popupStopAllExceptPlaneInfo();
 	}
 
 	this.addFlight = function(){
@@ -97,17 +105,15 @@ function Run(){
 		Run.popup.popupStop();
 	}
 
-
-
-
 	this.removeFlight = function(){
-		var indexToDelete = prompt("Введите номер рейса, который необходимо удалить", "");
-		if(!isFinite(indexToDelete)){
+		var indexToDelete = document.getElementById("DeleteFlightField").value - 1;
+		if(!isFinite(indexToDelete) || indexToDelete == -1 || indexToDelete > flightList.length - 1){
 			alert("Неправильно введены данные, попробуйте ещё.\n" );
 			return;
 		}
-		flightList.splice(indexToDelete - 1, 1);
+		flightList.splice(indexToDelete, 1);
 		Run.view.refreshFlightTable();
+		Run.popup.popupStop();
 	}
 	this.EditPilot = function(){
 		var indexToEdit = document.getElementById("EditPilotsField").value - 1;
@@ -143,7 +149,7 @@ function Run(){
 					return;
 				}
 				Run.view.refreshPilotTable();
-				Run.popup.popupStop();
+				Run.popup.popupStopAllExceptPilotInfo();
 				document.getElementById("popupTextEdit").innerHTML = "Введите номер пилота:";
 				editBtn.removeEventListener("click", editLastName);
 				editBtn.addEventListener("click", Run.EditPilot);
@@ -165,7 +171,7 @@ function Run(){
 			alert("Неправильно введены данные, попробуйте ещё.\n" + e);
 		}
 		Run.view.refreshPlaneTable();
-		Run.popup.popupStop();
+		Run.popup.popupStopAllExceptPlaneInfo();
 	}
 
 	this.removePilot = function(){
@@ -177,7 +183,7 @@ function Run(){
 		}
 		pilotList.splice(indexToDelete - 1, 1);
 		Run.view.refreshPilotTable();
-		Run.popup.popupStop();
+		Run.popup.popupStopAllExceptPilotInfo();
 	}
 
 	this.EditPlane = function(){
@@ -207,7 +213,7 @@ function Run(){
 					return;
 				}
 				Run.view.refreshPlaneTable();
-				Run.popup.popupStop();			
+				Run.popup.popupStopAllExceptPlaneInfo();			
 				document.getElementById("popupTextEdit").innerHTML = "Введите номер самолёта:";
 				document.getElementById("editBtnPlanes").removeEventListener("click", nameEdit);
 				document.getElementById("editBtnPlanes").addEventListener("click", Run.EditPlane);
@@ -236,7 +242,7 @@ function Run(){
 		var destination2Input = document.getElementById("editFlightDestination2");
 		
 		var indexToEdit = document.getElementById("EditFlightField").value - 1;
-		if(!isFinite(indexToEdit) || indexToEdit === -1){
+		if(!isFinite(indexToEdit) || indexToEdit === -1 || indexToEdit >= flightList.length){
 			alert("Неправильно введены данные, попробуйте ещё." );
 			return;
 		}
